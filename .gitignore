@@ -1,0 +1,16 @@
+# ROM image and SRAM, symbol and listing files
+*.gb
+*.sym
+*.lst
+*.sav
+*.rtc
+
+# temporary files
+*.tmp
+
+# old builds created by batch files
+old/
+
+# misc files
+\!*.bat
+*.diff
