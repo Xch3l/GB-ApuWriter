@@ -6,7 +6,7 @@ Little tool to play around with the GameBoy's sound registers.
 
 In the Main Menu, and all other submenus, use the directional pad's <kbd>UP</kbd> and <kbd>DOWN</kbd> to navigate between options and press <kbd>Ⓐ</kbd> to enter any submenu.
 
-Inside any editor, use <kbd>Ⓐ</kbd> to toggle any option and <kbd>LEFT</kbd> or <kbd>RIGHT</kbd> to change values. Using <kbd>Ⓑ</kbd> will allow for fast editing. Press <kbd>START</kbd> to reapply settings and <kbd>SELECT</kbd> to view the channel's raw data.
+Inside any editor, use <kbd>Ⓐ</kbd> to toggle any option and <kbd>LEFT</kbd> or <kbd>RIGHT</kbd> to change values. Holding <kbd>Ⓑ</kbd> will allow for fast editing. Press <kbd>START</kbd> to reapply settings and <kbd>SELECT</kbd> to view the channel's raw data.
 
 ### Wave Editor
 
