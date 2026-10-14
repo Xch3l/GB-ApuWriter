@@ -17,3 +17,5 @@ Selecting "Edit waveform" inside the Wave Channel editor will allow modifying th
 - [PanDocs](https://gbdev.io/pandocs/About.html): The main resource in all the GameBoy's workings and quirks
 - [Zeda's Z80 Optimized Routines](https://github.com/Zeda/Z80-Optimized-Routines)
 	- Specifically, their [very, very fast 8bit routine](https://github.com/Zeda/Z80-Optimized-Routines/blob/master/math/rng/rng8_very_very_fast.z80) (slightly modified for GB hardware)
+
+**No Artificial Intelligence (AI) of any kind was used in the creation of this software and its assets**
