@@ -26,4 +26,14 @@ WriteRegs:
 	jr NZ, -
 	ret
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Copies B bytes from HL to DE (ldir but limited to up to 256 byes)
+CopyBytes:
+	ldi A, (HL)
+	ld (DE), A
+	inc DE
+	dec B
+	jr NZ, CopyBytes
+	ret
+
 .ENDS

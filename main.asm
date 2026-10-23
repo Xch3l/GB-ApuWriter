@@ -19,23 +19,23 @@
 .DEFINE DIVIDER_TILE     $07
 .DEFINE CURSOR_ARROW     $08
 .DEFINE CHANNEL_NOTE     $09
-.DEFINE LCH_OFF          $0A
-.DEFINE LCH_ON           $0B
-.DEFINE RCH_OFF          $0C
-.DEFINE RCH_ON           $0D
-.DEFINE BOX_ICON         $0E
-.DEFINE TICK_ICON        $0F
-.DEFINE PULSE_EIGTH      $10
-.DEFINE PULSE_FOURTH     $11
-.DEFINE PULSE_HALF       $12
-.DEFINE PULSE_3FOURTHS   $13
-.DEFINE RAMP_DOWN        $14
-.DEFINE RAMP_UP          $15
+.DEFINE LCH_OFF          $0A ;   .   (left half dot)
+.DEFINE LCH_ON           $0B ; ((.
+.DEFINE RCH_OFF          $0C ;   .   (right half dot)
+.DEFINE RCH_ON           $0D ;   .))
+.DEFINE BOX_ICON         $0E ; empty box
+.DEFINE TICK_ICON        $0F ; checkmark
+.DEFINE PULSE_EIGTH      $10 ; _|¯|____
+.DEFINE PULSE_FOURTH     $11 ; _|¯¯|___
+.DEFINE PULSE_HALF       $12 ; _|¯¯¯|__
+.DEFINE PULSE_3FOURTHS   $13 ; _|¯¯¯¯|_
+.DEFINE RAMP_DOWN        $14 ; ¯\_
+.DEFINE RAMP_UP          $15 ; _/¯
 .DEFINE BLANK_TILE       $20
 .DEFINE INVERTED_SPACE   $80|BLANK_TILE
 .DEFINE INVERTED_NOTE    $80|CHANNEL_NOTE
 
-.MACRO text
+.MACRO text ; macro to insert a null-terminated string as data
 	.REPT NARGS
 		.db \1
 		.SHIFT

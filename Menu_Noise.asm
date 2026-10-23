@@ -9,7 +9,7 @@
 .SECTION "NOISE_MENU" SLOT SLOT_ROM0
 
 strNOI_MenuTitle: text "Noise"
-;               ::::::::::::::
+;                      ::::::::::::::
 strNOI_EnvSweep: text "Env. rate"
 strNOI_EnvDir:   text "Env. ramp"
 strNOI_ClkDiv:   text "Divider"
@@ -123,6 +123,7 @@ MenuNoise:
 @setbuf:
 	ld HL, TEXTBUF
 
+	; Set note icon
 	in $FF26 ; NR52
 	bit 3, A
 	ld A, INVERTED_SPACE

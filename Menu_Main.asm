@@ -30,6 +30,7 @@ MainMenu:
 	ld A, ($FF26)
 	ld B, A
 
+	; Display note icon for channels currenly playing (according to hw)
 	ld A, $20
 	bit 0, B
 	jr Z, +
@@ -60,11 +61,22 @@ MainMenu:
 	ld HL, RAM_INITD
 	ld A, $5A
 	cp (HL)
+	call NZ, @initRAM
+
+	call ReadInput
+	bit _JP_START, C
 	ret Z
 
+	call MenuPulse1@setapu
+	call MenuPulse2@setapu
+	call MenuWave@setapu
+	call MenuNoise@setapu
+	ret
+
+@initRAM:
 	ldi (HL), A
 
-	; Enable audio
+	; Enable audio hw
 	out $FF26, $80
 	out $FF25, $FF ; set panning
 	ldi (HL), A
@@ -94,10 +106,10 @@ MainMenu:
 @apuData:
 	.db $00, $00, $73, $00, $C4 ; Pulse 1
 	.db      $00, $73, $00, $C4 ; Pulse 2
-	.db $00, $F0, $20, $00, $C4 ; Wave
-	.db $01, $23, $45, $67, $89, $AB, $CD, $EF
+	.db $80, $F0, $20, $00, $C4 ; Wave
+	.db $01, $23, $45, $67, $89, $AB, $CD, $EF ; Waveform
 	.db $FE, $DC, $BA, $98, $76, $54, $32, $10
-	.db      $00, $73, $00, $80 ; Noise
+	.db      $00, $73, $00, $C0 ; Noise
 
 @initMenu1:
 	ld DE, MenuPulse1
@@ -114,13 +126,5 @@ MainMenu:
 @initMenu4:
 	ld DE, MenuNoise
 	call InitSubmenu
-
-CopyBytes:
-	ldi A, (HL)
-	ld (DE), A
-	inc DE
-	dec B
-	jr NZ, CopyBytes
-	ret
 
 .ENDS

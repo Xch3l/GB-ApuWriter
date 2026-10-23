@@ -126,7 +126,7 @@ InitMenu:
 	out rIE, IF_VBLANK
 	in rLCDC
 	set _LCDC_ON, A
-	out rLCDC;, LCDC_ON|LCDC_OBJ|LCDC_BG
+	out rLCDC
 
 	SetInt VBLANK_INT, MenuVBlank
 	ei
