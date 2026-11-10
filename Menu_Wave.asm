@@ -16,6 +16,8 @@ strWAV_MenuTitle: text "Wave"
 ;                       ::::::::::::::
 strWAV_EnableDAC: text "Enable DAC"
 strWAV_EditWave:  text "Edit waveform"
+strWAV_Volume:
+	.db "MuteHigh Mid Low"
 
 MenuWave:
 	.db 9 ; option count
@@ -59,8 +61,13 @@ MenuWave:
 	ld DE, MENU_LINE4+17 ; length
 	ld B, 2
 	call CopyBytes
-	ldi A, (HL) ; volume
-	ld (MENU_LINE3+18), A
+	ld B, 4 ; volume
+	ld DE, MENU_LINE3+15
+-	ldi A, (HL) ; volume
+	ld (DE), A
+	inc dE
+	dec B
+	jr NZ, -
 	ldi A, (HL) ; autostop
 	ld (MENU_LINE6+18), A
 	ldi A, (HL) ; retrigger
@@ -168,10 +175,22 @@ MenuWave:
 	ld A, (BC)
 	inc BC
 	inc BC
+	push BC
+	ld DE, strWAV_Volume
+	and $60
 	swap A
-	rra
-	and $03
-	call PutHexLo
+	rla
+	add E
+	ld E, A
+	jr NC, +
+	inc D
++	ld B, 4
+-	ld A, (DE)
+	ldi (HL), A
+	inc DE
+	dec B
+	jr NZ, -
+	pop BC
 
 	; Parse control flags
 	ld A, (BC)
